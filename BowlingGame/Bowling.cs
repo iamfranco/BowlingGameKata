@@ -25,28 +25,21 @@ namespace BowlingGame
             int rollCount = 0;
             foreach (FrameStatusEnum frameStatus in firstTenFrameStatuses)
             {
-                int frameScore;
-                int bonusScore;
-
                 if (frameStatus == FrameStatusEnum.strike)
                 {
-                    frameScore = numOfPinsDownAtRoll[rollCount];
-                    bonusScore = numOfPinsDownAtRoll[rollCount + 1] + numOfPinsDownAtRoll[rollCount + 2];
+                    score += 10 + numOfPinsDownAtRoll[rollCount + 1] + numOfPinsDownAtRoll[rollCount + 2];
                     rollCount++;
                 }
                 else if (frameStatus == FrameStatusEnum.spare)
                 {
-                    frameScore = numOfPinsDownAtRoll[rollCount] + numOfPinsDownAtRoll[rollCount + 1];
-                    bonusScore = numOfPinsDownAtRoll[rollCount + 2];
+                    score += 10 + numOfPinsDownAtRoll[rollCount + 2];
                     rollCount += 2;
                 }
                 else
                 {
-                    frameScore = numOfPinsDownAtRoll[rollCount] + numOfPinsDownAtRoll[rollCount + 1];
-                    bonusScore = 0;
+                    score += numOfPinsDownAtRoll[rollCount] + numOfPinsDownAtRoll[rollCount + 1];
                     rollCount += 2;
                 }
-                score += frameScore + bonusScore;
             }
 
             return score;
@@ -58,7 +51,7 @@ namespace BowlingGame
             foreach (char c in gamePins)
             {
                 if (c == 'X')
-                    rollPins.Add(10);
+                    rollPins.Add(10); 
                 else if (c == '/')
                     rollPins.Add(10 - rollPins.Last());
                 else if (c == '-')
@@ -72,7 +65,7 @@ namespace BowlingGame
 
         private static FrameStatusEnum[] GetFirstTenFrameStatuses(string gamePins)
         {
-            return gamePins.Split(' ').ToList().GetRange(0, 10).Select(item =>
+            return gamePins.Split(' ').ToList().GetRange(0, 10).Select(item => 
             {
                 if (item == "X")
                     return FrameStatusEnum.strike;
