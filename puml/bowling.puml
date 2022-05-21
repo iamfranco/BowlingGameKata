@@ -1,0 +1,20 @@
+@startuml "Bowling Game Kata"
+skinparam classAttributeIconSize 0
+
+enum FrameStatusEnum
+{
+  strike
+  spare
+  normal
+}
+
+class BowlingGame {
+  + CalculateScore(gamePins: string): int
+  - GetNumOfPinsDownForEveryRoll(gamePins: string): int[]
+  - GetFirstTenFrameStatuses(gamePins: string): FrameStatusEnum[]
+}
+
+BowlingGame --> FrameStatusEnum
+
+@enduml
+
