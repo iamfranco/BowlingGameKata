@@ -1,0 +1,15 @@
+1 game = 10 frames
+
+1 frame = 2 tries
+
+if 2 tries and not all knocked down
+   then score = total knocked down pins in 2 tries
+
+if 2 tries and all knocked down (spare)
+   then score = 10 + next try's pins
+
+if 1 try and all knocked down (strike)
+   then score = 10 + next 2 tries' pins
+
+if 10th frame and we get spare or strike
+   then get bonus throws and add those scores
