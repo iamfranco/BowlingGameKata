@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BowlingGame
 {
-    public class Bowling
+    public static class Bowling
     {
         private enum FrameStatusEnum
         {
