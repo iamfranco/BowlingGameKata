@@ -2,7 +2,7 @@ using FluentAssertions;
 
 namespace BowlingGame.Tests
 {
-    public class Tests
+    public class BowlingTests
     {
         [SetUp]
         public void Setup()
