@@ -8,11 +8,11 @@ namespace BowlingGame
 {
     public static class Bowling
     {
-        private enum FrameStatusEnum
+        private enum FrameStatus
         {
-            strike,
-            spare,
-            normal
+            Strike,
+            Spare,
+            Normal
         }
 
         public static int CalculateScore(string gamePins)
@@ -20,17 +20,17 @@ namespace BowlingGame
             int score = 0;
 
             int[] numOfPinsDownAtRoll = GetNumOfPinsDownForEveryRoll(gamePins);
-            FrameStatusEnum[] firstTenFrameStatuses = GetFirstTenFrameStatuses(gamePins);
+            FrameStatus[] firstTenFrameStatuses = GetFirstTenFrameStatuses(gamePins);
 
             int rollCount = 0;
-            foreach (FrameStatusEnum frameStatus in firstTenFrameStatuses)
+            foreach (FrameStatus frameStatus in firstTenFrameStatuses)
             {
-                if (frameStatus == FrameStatusEnum.strike)
+                if (frameStatus == FrameStatus.Strike)
                 {
                     score += 10 + numOfPinsDownAtRoll[rollCount + 1] + numOfPinsDownAtRoll[rollCount + 2];
                     rollCount++;
                 }
-                else if (frameStatus == FrameStatusEnum.spare)
+                else if (frameStatus == FrameStatus.Spare)
                 {
                     score += 10 + numOfPinsDownAtRoll[rollCount + 2];
                     rollCount += 2;
@@ -63,17 +63,17 @@ namespace BowlingGame
             return rollPins.ToArray();
         }
 
-        private static FrameStatusEnum[] GetFirstTenFrameStatuses(string gamePins)
+        private static FrameStatus[] GetFirstTenFrameStatuses(string gamePins)
         {
             return gamePins.Split(' ').ToList().GetRange(0, 10).Select(item => 
             {
                 if (item == "X")
-                    return FrameStatusEnum.strike;
+                    return FrameStatus.Strike;
 
                 if (item.Contains('/'))
-                    return FrameStatusEnum.spare;
+                    return FrameStatus.Spare;
 
-                return FrameStatusEnum.normal;
+                return FrameStatus.Normal;
             }).ToArray();
         }
     }
