@@ -1,20 +1,42 @@
 @startuml "Bowling Game Kata"
 skinparam classAttributeIconSize 0
 
-enum FrameStatusEnum
+enum FrameStatus
 {
-  strike
-  spare
-  normal
+  Strike
+  Spare
+  Normal
 }
 
-class BowlingGame {
+class Bowling {
   + CalculateScore(gamePins: string): int
   - GetNumOfPinsDownForEveryRoll(gamePins: string): int[]
   - GetFirstTenFrameStatuses(gamePins: string): FrameStatusEnum[]
 }
 
-BowlingGame --> FrameStatusEnum
+class Game {
+  - TOTAL_PINS: int
+  - MAX_FRAME: int
+
+  - pinsRemaining: int
+  - frameCount: int
+  - isNewFrame: bool
+  
+  - currentMultiplier: int
+  - nextMultiplier: int
+  - score: int
+  
+  + GetScore(): int
+  + Roll(number: int): void
+
+  - UpdatePrivateFieldsForNextRoll(): void
+  - GetFrameStatus(): FrameStatus
+  - IsNextRollANewFrame(): bool
+  - UpdateMultipliers(frameStatus: FrameStatus): void
+}
+
+Bowling --> FrameStatus
+Game --> FrameStatus
 
 @enduml
 
