@@ -8,13 +8,6 @@ namespace BowlingGame
 {
     public static class Bowling
     {
-        private enum FrameStatus
-        {
-            Strike,
-            Spare,
-            Normal
-        }
-
         public static int CalculateScore(string gamePins)
         {
             int score = 0;

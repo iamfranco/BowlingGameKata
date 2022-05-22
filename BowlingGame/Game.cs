@@ -8,13 +8,6 @@ namespace BowlingGame
 {
     public class Game
     {
-        private enum FrameStatus
-        {
-            Strike,
-            Spare,
-            Normal
-        }
-
         private const int TOTAL_PINS = 10;
         private int _pinsRemaining = TOTAL_PINS;
         private bool _isNewFrame = true;
