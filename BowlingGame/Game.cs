@@ -9,12 +9,14 @@ namespace BowlingGame
     public class Game
     {
         private const int TOTAL_PINS = 10;
+        private const int MAX_FRAME = 10;
+
         private int _pinsRemaining = TOTAL_PINS;
+        private int _frameCount = 1;
         private bool _isNewFrame = true;
 
         private int _currentMultiplier = 1;
         private int _nextMultiplier = 1;
-        private int _frameCount = 1;
 
         public int Score { get; private set; }
 
@@ -61,7 +63,7 @@ namespace BowlingGame
             _currentMultiplier = _nextMultiplier;
             _nextMultiplier = 1;
 
-            if (_frameCount > 10 || frameStatus == FrameStatus.Normal)
+            if (_frameCount > MAX_FRAME || frameStatus == FrameStatus.Normal)
                 return;
 
             if (frameStatus == FrameStatus.Spare)
