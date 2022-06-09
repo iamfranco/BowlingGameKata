@@ -1,7 +1,7 @@
 ﻿namespace BowlingGame.Models;
 public class Bowling
 {
-    private const int STANDARD_MAX_FRAMES = 10;
+    public const int STANDARD_MAX_FRAMES = 10;
     private readonly ScoreCalculator _scoreCalculator;
     private int _bonusRolls;
 
