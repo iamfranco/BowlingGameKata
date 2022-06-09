@@ -6,7 +6,7 @@ Here we have 3 folders:
 
 1. `BowlingGame` folder contains the c# implementation of the solutions
 2. `BowlingGame.Tests` folder contains the unit tests
-3. `puml` folder contains the [UML diagram](puml/Bowling%20Game%20Kata.png)
+3. `diagrams` folder contains diagrams relating to the solution, such as [UML diagram](diagrams/UML/Bowling%20Game%20Kata.png)
 
 # Instructions
 
@@ -21,3 +21,21 @@ To run the application:
 ```c#
 dotnet run
 ```
+
+# Demo
+
+![App Demo](diagrams/appDemo.gif)
+
+## Key Features
+
+The application will:
+
+1. Prompt the user to input a number, representing the number of pins knocked down by rolling a bowling ball through the lane
+2. Update the "score table" to include the user input number, following the "rule of bowling" (see [Bowling Game Kata](https://kata-log.rocks/bowling-game-kata))
+3. When all 10 frames were completed with no more bonus rolls, print the "game completion message" with the final score. For example:
+
+![Game Completion Message](diagrams/gameCompletionMessage.png)
+
+# UML Diagram
+
+![UML Diagram](diagrams/UML/Bowling%20Game%20Kata.png)

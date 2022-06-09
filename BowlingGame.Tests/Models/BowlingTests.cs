@@ -11,10 +11,10 @@ internal class BowlingTests
     }
 
     [Test]
-    public void Frames_Should_Return_Empty_List_By_Default()
+    public void Frames_Should_Return_Containe_One_Frame_By_Default()
     {
-        bowling.Frames.Count.Should().Be(0);
-        bowling.Frames.Should().Equal(new List<Frame>());
+        bowling.Frames.Count.Should().Be(1);
+        bowling.Frames[0].Rolls.Should().Equal(new List<int>());
     }
 
     [Test]
@@ -41,8 +41,9 @@ internal class BowlingTests
         bowling.Roll(1);
         bowling.Roll(2);
 
-        bowling.Frames.Count.Should().Be(1);
+        bowling.Frames.Count.Should().Be(2);
         bowling.Frames[0].Rolls.Should().Equal(new List<int>() { 1, 2 });
+        bowling.Frames[1].Rolls.Should().Equal(new List<int>());
         bowling.TotalScore.Should().Be(3);
     }
 
@@ -66,9 +67,10 @@ internal class BowlingTests
         bowling.Roll(1);
         bowling.Roll(2);
 
-        bowling.Frames.Count.Should().Be(2);
+        bowling.Frames.Count.Should().Be(3);
         bowling.Frames[0].Rolls.Should().Equal(new List<int>() { 10 });
         bowling.Frames[1].Rolls.Should().Equal(new List<int>() { 1, 2 });
+        bowling.Frames[2].Rolls.Should().Equal(new List<int>());
         bowling.TotalScore.Should().Be(16);
     }
 
@@ -80,9 +82,10 @@ internal class BowlingTests
         bowling.Roll(1);
         bowling.Roll(2);
 
-        bowling.Frames.Count.Should().Be(2);
+        bowling.Frames.Count.Should().Be(3);
         bowling.Frames[0].Rolls.Should().Equal(new List<int>() { 4, 6 });
         bowling.Frames[1].Rolls.Should().Equal(new List<int>() { 1, 2 });
+        bowling.Frames[2].Rolls.Should().Equal(new List<int>());
         bowling.TotalScore.Should().Be(14);
     }
 
