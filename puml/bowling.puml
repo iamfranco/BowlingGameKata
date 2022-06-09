@@ -1,42 +1,61 @@
 @startuml "Bowling Game Kata"
 skinparam classAttributeIconSize 0
 
-enum FrameStatus
-{
+class Bowling {
+  - STANDARD_MAX_FRAMES : int
+  - scoreCalculator : ScoreCalculator
+  - bonusRolls : int
+
+  - frames : List<Frame>
+  - totalScore : int
+  - isComplete : bool
+
+  + GetFrames() : List<Frame>
+  + GetTotalScore() : int
+  + GetIsComplete() : bool
+
+  + Roll(pinsDown : int) : void
+}
+
+class Frame {
+  - MAX_PINS_COUNT : int
+  - MAX_ROLLS_COUNT : int
+
+  - pinsCount : int
+
+  - rolls : List<int>
+  - status : FrameStatus
+
+  + GetRolls() : List<int>
+  + GetStatus() : FrameStatus
+
+  + AddRoll(pinsDown : int) : void
+}
+
+class ScoreCalculator {
+  - MAX_FRAME_INDEX_WITH_BONUS : int
+
+  - currentMultiplier : int
+  - nextMultiplier : int
+
+  + CalculateCurrentRollScore(frame : Frame, frameIndex : int) : int
+
+  - UpdateMultipliers(frame : Frame, frameIndex : int) : void
+}
+
+enum FrameStatus {
   Strike
   Spare
   Normal
+  Incomplete
+
+  IsComplete() : bool
 }
 
-class Bowling {
-  + CalculateScore(gamePins: string): int
-  - GetNumOfPinsDownForEveryRoll(gamePins: string): int[]
-  - GetFirstTenFrameStatuses(gamePins: string): FrameStatusEnum[]
-}
+Bowling o-- ScoreCalculator
+Bowling o-- Frame
+ScoreCalculator -> Frame
 
-class Game {
-  - TOTAL_PINS: int
-  - MAX_FRAME: int
-
-  - pinsRemaining: int
-  - frameCount: int
-  - isNewFrame: bool
-  
-  - currentMultiplier: int
-  - nextMultiplier: int
-  - score: int
-  
-  + GetScore(): int
-  + Roll(number: int): void
-
-  - UpdatePrivateFieldsForNextRoll(): void
-  - GetFrameStatus(): FrameStatus
-  - IsNextRollANewFrame(): bool
-  - UpdateMultipliers(frameStatus: FrameStatus): void
-}
-
-Bowling --> FrameStatus
-Game --> FrameStatus
+Frame o-- FrameStatus
 
 @enduml
-
