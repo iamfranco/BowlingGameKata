@@ -6,12 +6,14 @@ internal static class AppUIHelpers
 {
     public static Table InitialiseScoreTable()
     {
+        Console.Clear();
+
         Table scoreTable = new Table();
 
-        List<string> scoreTableColumnNames = new() { "Total Score" };
+        List<string> scoreTableColumnNames = new() { "Total\nScore" };
         for (int i = 1; i <= Bowling.STANDARD_MAX_FRAMES; i++)
         {
-            scoreTableColumnNames.Add($"Frame {i}");
+            scoreTableColumnNames.Add($"Frame\n{i}");
         }
         scoreTable.AddColumns(scoreTableColumnNames.ToArray());
         scoreTable.AddRow("[blue]0[/]");
