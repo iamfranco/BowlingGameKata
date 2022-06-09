@@ -11,6 +11,19 @@ internal class FrameTests
     }
 
     [Test]
+    public void PinsStillStanding_Should_Return_10_By_Default()
+    {
+        frame.PinsStillStanding.Should().Be(10);
+    }
+
+    [Test]
+    public void AddRoll_3_Then_PinsStillStanding_Should_Return_7()
+    {
+        frame.AddRoll(3);
+        frame.PinsStillStanding.Should().Be(7);
+    }
+
+    [Test]
     public void Rolls_Should_Return_Empty_List_By_Default()
     {
         frame.Rolls.Count.Should().Be(0);
